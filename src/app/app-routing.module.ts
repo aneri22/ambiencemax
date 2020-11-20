@@ -10,7 +10,10 @@ const routes: Routes = [{
   path: 'dialogg/:id', component: AddDialogComponent,
 
 },
-{path: 'viewcomm' , component: ViewcommComponent}];
+{path: 'viewcomm' , component: ViewcommComponent},
+{path: 'reqform/:id',component:RequestFormComponent}
+];
+
 
 @NgModule({
   imports: [RouterModule.forRoot(routes , {onSameUrlNavigation: 'reload' } ) ],

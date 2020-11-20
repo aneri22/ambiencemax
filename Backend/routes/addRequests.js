@@ -2,7 +2,7 @@ let express = require("express"),
   router = express.Router(),
   con = require("../mysql_config/config");
 
-  router.post("/newReq" , (req,res) =>{
+  router.post("/newReq" , (req,response) =>{
     request = req.body.request;
     req_title = request.req_title;
     req_type = request.req_type;
@@ -27,7 +27,9 @@ let express = require("express"),
           console.log(err);
         }else{
           console.log(res);
-          return;
+          console.log(res.insertId,"req_id");
+          // userDataService.addReqToLog(res.insertId);
+          response.send(JSON.stringify({id:res.insertId}))
         }
       })
     })

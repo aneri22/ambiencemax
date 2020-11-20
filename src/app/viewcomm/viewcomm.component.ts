@@ -16,6 +16,7 @@ export class ViewcommComponent implements OnInit {
   // allocateForm:FormGroup;
   // users:any=[];
   comment = '';
+  userRole='';
   Approvers = [];
   appExists = false;
   constructor(public userDataService: UserDataService , private route: Router,  private router: Router,public snackBar: MatSnackBar) {
@@ -42,8 +43,8 @@ export class ViewcommComponent implements OnInit {
 //   this.router.navigate(['add-dialog']);
 // }
 goToUpgrade() {
-
-  this.router.navigate(['/dialogg']);
+  
+  //this.router.navigate(['/dialogg']);
 
 }
 goToRequestAction(req_id) {
@@ -86,3 +87,4 @@ goToRequestAction(req_id) {
   }
 }
 
+  

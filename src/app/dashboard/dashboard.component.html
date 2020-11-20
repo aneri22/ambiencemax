@@ -86,18 +86,28 @@
         >
           New Request
         </a>
-        <a
+        <!-- <a
         class="btn"
         *ngIf="this.UsrDataService.userRole !== 1"
-        (click)="main = 'form'; snav.toggle()"
+        
         mat-list-item
       >
         Open Request
-      </a>
+      </a> -->
         <!-- <a class="btn" *ngIf= 'this.UsrDataService.userRole === 1'
         (click) = "Request('UnderNeg'); snav.toggle();" mat-list-item>
           Under Negotiation
         </a> -->
+<!--         
+        <a
+        class="btn"
+        *ngFor="let chip of Buttons1"
+        (click)="Request(chip.func); snav.toggle(); main = chip.func;
+        this.UsrDataService.main = chip.func;"
+        mat-list-item
+      >
+        {{ chip.name }}</a
+      > -->
         <a
           class="btn"
           *ngFor="let chip of Buttons"
@@ -213,7 +223,7 @@
                 </mat-card-actions>
               </mat-card>
             </div>
-            <div class="col" *ngIf="this.UsrDataService.userRole !== 1">
+            <div class="col">
               <mat-card class="example-card">
                 <mat-card-title>Open Requests</mat-card-title>
                 <mat-card-content>

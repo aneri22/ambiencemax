@@ -71,7 +71,8 @@
     <tr>
       <td>10.</td>
       <td>Comment:</td>
-      <td (click)="goToRequestAction(view.req_id)">{{ view.acomment }}<textarea
+      <!-- (click)="goToRequestAction(view.req_id)" -->
+      <td >{{ view.acomment }}<textarea
         rows="4"
         style="
           width: 70%;
@@ -97,7 +98,7 @@
     <div class="col-lg-3"></div>
    
  
-    <div class="text-center col-lg-6">
+    <!-- <div class="text-center col-lg-6">
       <button
         class="btn btn-success btn-large"
         style="width: 100%;"
@@ -106,7 +107,7 @@
         *ngIf = "userDataService.toBeApproved"
       >
         Approve
-      </button>
+      </button> -->
    
       <!-- <form [formGroup]="allocateForm" >
 
@@ -126,18 +127,19 @@
         </div>
       </form> -->
       
-    </div>
+    <!-- </div> -->
     <div class="col-lg-6"></div>
     <div class="text-center col-lg-6">
       <!-- <a routerLink="dashboard" >Resend</a>
       <router-outlet></router-outlet>
       <footer></footer> -->
+      <!-- (click)="goToUpgrade()" -->
       <button type="button"  
         class="btn btn-danger btn-large"
         style="width: 60%;"
-        (click)="goToUpgrade()"
+        (click)="userDataService.ResendUpdate(view.req_id);this.openSnackBar('Request Resend Successfully!');"
       >
-        Resend
+        Resend For Change
       </button>
     </div>
      </div>
