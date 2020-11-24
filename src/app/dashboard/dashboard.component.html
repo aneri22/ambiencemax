@@ -131,7 +131,7 @@
         <div *ngIf="main === 'all'">
           <app-request-table></app-request-table>
         </div>
-        <div *ngIf="main === 'open' && this.UsrDataService.userId !== 1">
+        <div *ngIf="main === 'open'">
           <app-request-table></app-request-table>
         </div>
         <div *ngIf="main === 'closed'">

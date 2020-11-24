@@ -78,9 +78,9 @@
       this.UsrDataService.mainObservable().subscribe( e => {
         this.main = e;
       });
-      if(this.UsrDataService.userId==1){
+      // if(this.UsrDataService.userId==1){
         
-      }
+      // }
       if (this.UsrDataService.userRole == null || this.UsrDataService.allRequests.length === 0) {
         this.UsrDataService.Data = JSON.parse(localStorage.getItem('userData'));
         if (this.UsrDataService.Data !== null) {

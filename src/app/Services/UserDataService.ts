@@ -202,12 +202,12 @@
       if(this.resendTo=="Country Head"){this.userRole=6;}
       if(this.resendTo=="Geography Head"){this.userRole=7;}
       console.log("in resendUpdate",this.resendTo,"",this.userRole);
-      if(this.userRole>1 && this.userRole<8)
-      {
-        this.userRole=this.userRole-1;
-      }
-      else this.userRole=1;
-      this.http.post('http://localhost:5600/resendReq', {req_id: reqId , userRole: this.userRole})
+      // if(this.userRole>1 && this.userRole<8)
+      // {
+      //   this.userRole=this.userRole-1;
+      // }
+      // else this.userRole=1;
+      this.http.post('http://localhost:5600/resendReq', {req_id: reqId , userRole: this.userRole-1})
       .subscribe((ResData) => {
         console.log("In Resend Method",ResData);
         
@@ -288,7 +288,7 @@
       } else if (this.main === 'open') {
         // this.isPending = false;
         this.desiredRequests = this.openRequests;
-        console.log('Closed Called');
+        console.log('Open Called');
       }
       this.desiredReqSub.next(this.desiredRequests);
       this.toBeApproved = false;
@@ -364,11 +364,15 @@
               .subscribe((ResData) => {
                 console.log(ResData);
                 this.Workflow = ResData[0].w_flow.split(',');
-              
+                this.Workflow.unshift(el.req_initiator_id);
+                
+                
               //console.log("Workflow in reqclassification",this.Workflow,"request level",el.req_level,"userRole",this.userRole);
-              for(let i=0;i<this.Workflow.length;i++){    
+              for(let i=0;i<this.Workflow.length;i++){  
+                console.log(this.Workflow[i],"Workflow with initiator_id");
+                console.log(this.userRole,"userRole");  
                 if (this.Workflow[i]==this.userRole) {
-                  console.log("Workflow in reqclassification",this.Workflow[i],"i-1",this.Workflow[i-1],"request level",el.req_level,"userRole",this.userRole);
+                  console.log("Workflow in reqclassification",this.Workflow[i],"i-1",this.Workflow[i]-1,"request level",el.req_level,"userRole",this.userRole);
                   console.log("in reqClassification",el.req_level," ",this.userRole);
                   if(el.req_level == this.userRole-1) 
                   {
@@ -432,7 +436,7 @@
           } else if (this.main === 'open') {
             // this.isPending = false;
             this.desiredRequests = this.openRequests;
-            console.log('Closed Called');
+            console.log('Open Called');
           }
           this.desiredReqSub.next(this.desiredRequests);
           console.log(this.desiredRequests);
@@ -519,7 +523,7 @@
           } else if (this.main === 'open') {
             // this.isPending = false;
             this.desiredRequests = this.openRequests;
-            console.log('Closed Called');
+            console.log('Open Called');
           }
           this.reqStats.All += response.req_data.length;
           response.req_data.forEach((e) => {
